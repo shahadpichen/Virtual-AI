@@ -68,7 +68,7 @@ const Chatbot = () => {
   };
 
   return (
-    <div className="w-[30%]">
+    <div>
       <div className="backdrop-blur-md bg-white bg-opacity-50 p-4 rounded-lg w-full max-w-md p-4">
         <div id="chat-history" className="h-80 overflow-y-scroll mb-4">
           {chatHistory.map((msg, index) => (
@@ -107,7 +107,7 @@ const Chatbot = () => {
           id="loader"
           className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
         >
-          <img src="/loader.gif" width="150px" alt="Loading..." />
+          <img src="/hourGlass.gif" width="150px" alt="Loading..." />
         </div>
       )}
     </div>

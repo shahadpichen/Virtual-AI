@@ -2,17 +2,10 @@ import { useRef } from "react";
 import { useChat } from "../hooks/useChat";
 import Chatbot from "./Chat";
 
-export const UI = ({ hidden, ...props }) => {
+export const UI = ({ hidden }) => {
   const input = useRef();
-  const { chat, loading, cameraZoomed, setCameraZoomed, message } = useChat();
+  const { cameraZoomed, setCameraZoomed } = useChat();
 
-  const sendMessage = () => {
-    const text = input.current.value;
-    if (!loading && !message) {
-      chat(text);
-      input.current.value = "";
-    }
-  };
   if (hidden) {
     return null;
   }
@@ -27,9 +20,9 @@ export const UI = ({ hidden, ...props }) => {
         <div className="w-full flex flex-col items-end gap-4">
           <button
             onClick={() => setCameraZoomed(!cameraZoomed)}
-            className="fixed top-4 right-4 pointer-events-auto  bg-[#1e3048] hover:bg-[#2d486c] text-white p-3 rounded-full"
+            className="hidden md:flex fixed top-4 right-4 pointer-events-auto  bg-[#1e3048] hover:bg-[#2d486c] text-white p-3 rounded-full"
           >
-            {!cameraZoomed ? (
+            {cameraZoomed ? (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -62,7 +55,7 @@ export const UI = ({ hidden, ...props }) => {
             )}
           </button>
         </div>
-        <div className="flex  pointer-events-auto w-[97vw] justify-end ">
+        <div className="flex pointer-events-auto w-[97vw] justify-center md:justify-end">
           <Chatbot />
         </div>
       </div>

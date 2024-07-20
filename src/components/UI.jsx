@@ -1,6 +1,12 @@
 import { useRef } from "react";
 import { useChat } from "../hooks/useChat";
 import Chatbot from "./Chat";
+import Highcharts from "highcharts";
+import HighchartsReact from "highcharts-react-official";
+import Highcharts3D from "highcharts/highcharts-3d";
+if (typeof Highcharts === "object") {
+  Highcharts3D(Highcharts);
+}
 
 export const UI = ({ hidden }) => {
   const input = useRef();
@@ -9,6 +15,130 @@ export const UI = ({ hidden }) => {
   if (hidden) {
     return null;
   }
+
+  const options = {
+    chart: {
+      backgroundColor: "transparent",
+      type: "column",
+      options3d: {
+        enabled: true,
+        alpha: 15,
+        beta: 15,
+        viewDistance: 25,
+        depth: 40,
+      },
+    },
+    title: {
+      text: "Chat Queries in the Last 20 Days",
+      align: "center",
+    },
+    xAxis: {
+      labels: {
+        skew3d: true,
+        style: {
+          fontSize: "16px",
+        },
+      },
+      categories: [
+        "2024-07-10",
+        "2024-07-11",
+        "2024-07-12",
+        "2024-07-13",
+        "2024-07-14",
+        "2024-07-15",
+        "2024-07-16",
+        "2024-07-17",
+        "2024-07-18",
+        "2024-07-19",
+        "2024-07-20",
+      ],
+    },
+    yAxis: {
+      allowDecimals: false,
+      min: 0,
+      title: {
+        text: "Number of Queries",
+        skew3d: true,
+        style: {
+          fontSize: "16px",
+        },
+      },
+    },
+    tooltip: {
+      headerFormat: "<b>{point.key}</b><br>",
+      pointFormat:
+        '<span style="color:{series.color}">\u25CF</span> ' +
+        "{series.name}: {point.y} queries",
+    },
+    plotOptions: {
+      series: {
+        pointStart: 1,
+      },
+      column: {
+        stacking: "normal",
+        depth: 40,
+      },
+    },
+    series: [
+      {
+        name: "Chat Queries",
+        data: [250, 160, 200, 220, 170, 240, 210, 260, 230, 250],
+        stack: "Chat Data",
+      },
+    ],
+  };
+
+  // const options = {
+  //   chart: {
+  //     type: "column",
+  //     options3d: {
+  //       enabled: true,
+  //       alpha: 15,
+  //       beta: 35,
+  //       depth: 70,
+  //     },
+  //   },
+  //   title: {
+  //     text: "Chat Queries ",
+  //     align: "left",
+  //   },
+
+  //   plotOptions: {
+  //     column: {
+  //       depth: 12,
+  //     },
+  //   },
+  //   xAxis: {
+  //     type: "category",
+
+  //     categories: [
+  //       "2024-07-10",
+  //       "2024-07-11",
+  //       "2024-07-12",
+  //       "2024-07-13",
+  //       "2024-07-14",
+  //       "2024-07-15",
+  //       "2024-07-16",
+  //       "2024-07-17",
+  //       "2024-07-18",
+  //       "2024-07-19",
+  //       "2024-07-20",
+  //     ],
+  //   },
+  //   yAxis: {
+  //     title: {
+  //       text: "Number of Queries",
+  //       margin: 5,
+  //     },
+  //   },
+
+  //   series: [
+  //     {
+  //       name: "Chat Queries",
+  //       data: [250, 160, 200, 220, 170, 240, 210, 260, 230, 250],
+  //     },
+  //   ],
+  // };
 
   return (
     <>
@@ -20,7 +150,7 @@ export const UI = ({ hidden }) => {
         <div className="w-full flex flex-col items-end gap-4">
           <button
             onClick={() => setCameraZoomed(!cameraZoomed)}
-            className="hidden md:flex fixed top-4 right-4 pointer-events-auto  bg-[#1e3048] hover:bg-[#2d486c] text-white p-3 rounded-full"
+            className="hidden md:flex fixed top-4 right-[50%] pointer-events-auto  bg-[#1e3048] hover:bg-[#2d486c] text-white p-3 rounded-full"
           >
             {cameraZoomed ? (
               <svg
@@ -54,6 +184,9 @@ export const UI = ({ hidden }) => {
               </svg>
             )}
           </button>
+        </div>
+        <div className="hidden lg:flex fixed top-[0vh] right-2 w-[25%]">
+          <HighchartsReact highcharts={Highcharts} options={options} />
         </div>
         <div className="flex pointer-events-auto w-[97vw] justify-center md:justify-end">
           <Chatbot />

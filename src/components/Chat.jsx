@@ -14,13 +14,16 @@ const Chatbot = () => {
     setLoading(true);
 
     try {
-      const response = await fetch("https://virtual-ai-server.vercel.app/chat", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ userInput: userMessage }),
-      });
+      const response = await fetch(
+        "https://virtual-ai-server.vercel.app/chat",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ userInput: userMessage }),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to send message");

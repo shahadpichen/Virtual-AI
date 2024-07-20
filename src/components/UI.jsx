@@ -29,7 +29,7 @@ export const UI = ({ hidden }) => {
       },
     },
     title: {
-      text: "Chat Queries in the Last 20 Days",
+      text: "Chat Queries in the Last 10 Days",
       align: "center",
     },
     xAxis: {

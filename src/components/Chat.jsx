@@ -14,7 +14,7 @@ const Chatbot = () => {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:3001/chat", {
+      const response = await fetch("https://virtual-ai-server.vercel.app/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

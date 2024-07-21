@@ -1,9 +1,39 @@
-# React + Vite
+# Gecho
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the frontend client for the AI Avatar project. It is built using React and communicates with the AI Avatar server to handle chat functionality and text-to-speech interactions.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-# Virtual-AI
+- Chat interface for interacting with AI
+- Dynamic theming with Tailwind CSS
+- Fetching AI responses from the backend server
+- Displaying AI avatar animations
+
+## Getting Started
+
+### Prerequisites
+
+Make sure you have the following installed:
+
+- Node.js (v14.x or higher)
+- npm (v6.x or higher)
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/yourusername/ai-avatar-client.git
+cd ai-avatar-client
+```
+2. Install the dependencies:
+```bash
+npm install
+```
+
+To start the client, run the following command:
+
+```bash
+npm start
+```
+The client will start on http://localhost:3000 by default.

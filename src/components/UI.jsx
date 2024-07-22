@@ -16,7 +16,7 @@ export const UI = ({ hidden }) => {
     return null;
   }
 
-  const options = {
+ const options = {
     chart: {
       backgroundColor: "transparent",
       type: "column",
@@ -27,16 +27,23 @@ export const UI = ({ hidden }) => {
         viewDistance: 25,
         depth: 40,
       },
+      style: {
+        color: "white",
+      },
     },
     title: {
-      text: "Chat Queries in the Last 10 Days",
+      text: "Chat Queries in the Last 20 Days",
       align: "center",
+      style: {
+        color: "white",
+      },
     },
     xAxis: {
       labels: {
         skew3d: true,
         style: {
           fontSize: "16px",
+          color: "white",
         },
       },
       categories: [
@@ -61,6 +68,7 @@ export const UI = ({ hidden }) => {
         skew3d: true,
         style: {
           fontSize: "16px",
+          color: "white",
         },
       },
     },
@@ -77,6 +85,9 @@ export const UI = ({ hidden }) => {
       column: {
         stacking: "normal",
         depth: 40,
+        style: {
+          color: "white",
+        },
       },
     },
     series: [

@@ -18,15 +18,23 @@
 }
 body {
   margin: 0;
-  background-color: #e0f0f9; /* Light bluish-gray */
-  background-image: linear-gradient(
+  background-color: #e0f0f9;
+  /* background-image: linear-gradient(
     19deg,
     #b0c4de 0%,
     #e0f0f9 100%
-  ); /* Light blue gradient with a gray touch */
+  );  */
+  background-image: url("../public/image2.jfif");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 body.greenScreen {
   background-color: #00ff00;
   background-image: none;
+}
+
+.highcharts-title {
+  color: "white" !important;
 }
